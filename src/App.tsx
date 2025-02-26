@@ -1,4 +1,5 @@
 import MainContent from './components/MainContent'
+import ProductPage from './components/ProductPage'
 import Sidebar  from './components/Sidebar'
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 
@@ -11,7 +12,8 @@ function App() {
           <Sidebar/>
         <div className='rounded w-full flex justify-between felx-wrap'>
           <Routes>
-            <Route path="/" element={<MainContent/>}/>
+            <Route path='/' element={<MainContent/>}/>
+            <Route path='/product/:id' element={<ProductPage/>}/>
           </Routes>
         </div>
         </div>

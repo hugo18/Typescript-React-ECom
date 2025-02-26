@@ -94,7 +94,7 @@ function Sidebar() {
                     {categories.map((category, index) => (
                         <label key={index} className="block mb-2">
                             <input type="radio" name="category" value={category} 
-                            className="mr-2 w-[16px] h-[16px]" onClick={() => handleRadioChangeCategories(category)}
+                            className="mr-2 w-[16px] h-[16px]" onClick={() => handleRadioChangeCategories(category)} onChange={() => handleRadioChangeCategories(category)}
                             checked={selectedCategory === category} />
                             {category} 
                         </label>
