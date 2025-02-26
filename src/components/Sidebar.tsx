@@ -40,6 +40,37 @@ function Sidebar() {
         fetchCaregories()
     }, [])
 
+    const handleMinPriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value
+        setMinPrice(value ? parseFloat(value): undefined)   
+    }
+    
+    const handleMaxPriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value
+        setMaxPrice(value ? parseFloat(value): undefined)   
+    }
+
+    const handleRadioChangeCategories = (category: string) => {
+        if(category === selectedCategory)
+            setSelectedCategory('')
+        else
+            setSelectedCategory(category)
+    }
+
+    const handleKeywordClick = (kw:string) => {
+        if(keyword === kw)
+            setKeyword('')    
+        else
+            setKeyword(kw)
+    }
+    const handleResetFilters = () => {
+        setSearchQuery('')
+        setSelectedCategory('')
+        setMinPrice(undefined)
+        setMaxPrice(undefined)
+        setKeyword('')
+
+    }
     return (
     <>
       
@@ -50,8 +81,10 @@ function Sidebar() {
                 value={searchQuery} onChange={e => setSearchQuery(e.target.value)}/>
                 
                 <div className="flex justify-center items-center">
-                    <input type="text" className="border-2 mr-4 px-4 py-3 mb-3 w-full" placeholder="Mínimo"/>
-                    <input type="text" className="border-2 px-4 py-3 mb-3 w-full" placeholder="Máximo"/>
+                    <input type="text" className="border-2 mr-4 px-4 py-3 mb-3 w-full" placeholder="Mínimo"
+                     value={minPrice ?? ''} onChange={handleMinPriceChange}/>
+                    <input type="text" className="border-2 px-4 py-3 mb-3 w-full" placeholder="Máximo"
+                     value={maxPrice ?? ''} onChange={handleMaxPriceChange}/>
                 </div>
 
                 <div className="mb-5">
@@ -60,7 +93,9 @@ function Sidebar() {
                 <section>
                     {categories.map((category, index) => (
                         <label key={index} className="block mb-2">
-                            <input type="radio" name="category" value={category} className="mr-2 w-[16px] h-[16px]"/>
+                            <input type="radio" name="category" value={category} 
+                            className="mr-2 w-[16px] h-[16px]" onClick={() => handleRadioChangeCategories(category)}
+                            checked={selectedCategory === category} />
                             {category} 
                         </label>
                 
@@ -70,14 +105,15 @@ function Sidebar() {
                 <div className="mb-5 mt-4">
                     <h2 className="text-xl font-semibold mb-3">Palavras-chave</h2>
                     <div>
-                        {keywords.map((keyword, index) => (
-                            <button key={index} className="block mb-2 px-4 py-2 w-full text-left border rounded hover:bg-gray-200">
-                                {keyword}
+                        {keywords.map((kw, index) => (
+                            <button key={index} onClick={() => handleKeywordClick(kw)} 
+                            className={`block mb-2 px-4 py-2 w-full text-left border rounded ${keyword === kw ? 'bg-gray-950 hover:bg-gray-800 text-white' : 'bg-gray-100 hover:bg-gray-300'}`}>
+                                {kw}
                             </button>
                         ))}
                     </div>
                 </div>
-                <button className="w-full mb-[4rem] py-2 bg-black text-white rounded mt-5">Redefinir filtros</button>
+                <button className="w-full mb-[4rem] py-2 bg-black text-white rounded mt-5" onClick={handleResetFilters}>Redefinir filtros</button>
             </section>
            
         
