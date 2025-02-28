@@ -75,20 +75,20 @@ function Sidebar() {
     <>
       
         <div className="w-64 p-5 h-screen">
-            <h1 className="text-2xl font-bold mb-10 mt4">Loja React</h1>
+            <h1 className="text-2xl font-bold mb-10 mt-4">Loja React</h1>
             <section>
-                <input type="text" className="border-2 rounded px-2 sm:mb-0" placeholder="Procurar produto"
+                <input type="text" className="border-1 rounded px-2 py-3 w-full sm:mb-0" placeholder="Procurar produto"
                 value={searchQuery} onChange={e => setSearchQuery(e.target.value)}/>
                 
-                <div className="flex justify-center items-center">
-                    <input type="text" className="border-2 mr-4 px-4 py-3 mb-3 w-full" placeholder="Mínimo"
+                <div className="flex justify-center items-center mt-2 mb-4">
+                    <input type="text" className="rounded border-1 mr-2 px-4 py-3 mb-3 w-full" placeholder="Mín."
                      value={minPrice ?? ''} onChange={handleMinPriceChange}/>
-                    <input type="text" className="border-2 px-4 py-3 mb-3 w-full" placeholder="Máximo"
+                    <input type="text" className="rounded border-1 px-4 py-3 mb-3 w-full" placeholder="Máx."
                      value={maxPrice ?? ''} onChange={handleMaxPriceChange}/>
                 </div>
 
-                <div className="mb-5">
-                    <h2 className="text-xl font-semibold mb-3">Categorias</h2>
+                <div className="mb-2">
+                    <h2 className="text-xl font-semibold mb-1">Categorias</h2>
                 </div>
                 <section>
                     {categories.map((category, index) => (
@@ -102,7 +102,7 @@ function Sidebar() {
                     ))}
                 </section>
 
-                <div className="mb-5 mt-4">
+                <div className="mb-5 mt-6">
                     <h2 className="text-xl font-semibold mb-3">Palavras-chave</h2>
                     <div>
                         {keywords.map((kw, index) => (
@@ -113,7 +113,7 @@ function Sidebar() {
                         ))}
                     </div>
                 </div>
-                <button className="w-full mb-[4rem] py-2 bg-black text-white rounded mt-5" onClick={handleResetFilters}>Redefinir filtros</button>
+                <button className="w-full mb-[4rem] py-2 bg-black text-white rounded mt-5" onClick={handleResetFilters}>Apagar filtros</button>
             </section>
            
         

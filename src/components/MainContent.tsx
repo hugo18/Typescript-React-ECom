@@ -80,7 +80,7 @@ function MainContent(){
     }
 
     return (<>
-        <section className='xl:w-[55rem] lg:w-[55rem] sm:w-[40rem] xs:w-[20rem] p-5'>
+        <section className='xl:w-[55rem] mr-[2rem] lg:w-[55rem] sm:w-[40rem] xs:w-[20rem] p-5'>
             <div className='mb-5'>
                 <div className='flex flex-col sm:flex-row justify-between items-center'>
                     <div className='relative mb-5 mt-5'>
